@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/03/23 17:01:12 by guisanto         ###   ########.fr        #
+#    Updated: 2025/03/23 17:09:40 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,7 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -Iminilibx-linux
-
-#CFLAGS = -Wall -Wextra -Werror -g
-
+CFLAGS = -Wall -Wextra -W -g -Iminilibx-linux
 
 # Detectar sistema operacional (Linux ou macOS)
 ifeq ($(shell uname -s),Darwin)

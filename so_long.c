@@ -6,20 +6,12 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:02:46 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/23 17:01:55 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:09:04 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <time.h>
-
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-	time_t	keypress_time;
-}	t_vars;
-
 
 
 int close_window(int keycode, t_vars *vars)
