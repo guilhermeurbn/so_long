@@ -1,9 +1,10 @@
 {
     "files.associations": {
-        "mlx.h": "c",
-        "so_long.h": "c",
-        "libft.h": "c",
-        "stdlib.h": "c",
-        "stdio.h": "c"
-    }
+		"mlx.h": "c",
+		"so_long.h": "c",
+		"libft.h": "c",
+		"stdlib.h": "c",
+		"stdio.h": "c",
+		"get_next_line.h": "c"
+	}
 }
