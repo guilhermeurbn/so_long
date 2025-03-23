@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/21 12:42:10 by guisanto         ###   ########.fr       */
+/*   Created: 2024/12/11 12:35:02 by guisanto          #+#    #+#             */
+/*   Updated: 2025/03/21 12:43:10 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
-# include <stdlib.h>
+# include <fcntl.h>
+# include <stddef.h>
 # include <stdio.h>
-#include "mlx/mlx.h"
-#include <stdlib.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
-# include "get_next_line/get_next_line.h"
-# include "libft/libft.h"
-# include <mlx.h>
+# include <stdlib.h>
+# include <unistd.h>
 
+char	*get_next_line(int fd);
+int		ft_strlenn(char *str);
+char	*ft_strjoinn(char *next_line, char *buffer);
 
 #endif

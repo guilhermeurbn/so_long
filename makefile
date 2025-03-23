@@ -5,43 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/12 14:55:57 by guisanto          #+#    #+#              #
-#    Updated: 2025/03/12 16:02:23 by guisanto         ###   ########.fr        #
+#    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
+#    Updated: 2025/03/21 16:39:37 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = so_long
 
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g 
 
-CFLAGS = -Wall -Wextra -Werror -g
+ifeq ($(shell uname), Linux)
+	INCLUDES = -I/usr/include -Imlx
+else
+	INCLUDES = -I/opt/X11/include -Imlx
+endif
 
-MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_DIR = ./mlx
+MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
 
-LIBFT_PATH = libft/
 
-LIBFT_LIB = $(LIBFT_PATH)libft.a
-# O diretório de cabeçalhos da MiniLibX
-MLX_LIB = minilibx_macos/libmlx.a
+ifeq ($(shell uname), Linux)
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
 
-all: $(NAME)
+# Arquivos fontes
+SRC = so_long.c utils.c
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@
+# Gerar objetos automaticamente a partir dos arquivos fontes
+OBJS = $(SRC:.c=.o)
 
-OBJ = $(patsubst %.c,%.o,$(wildcard *.c))
-	$(CC) $(OBJ) $(MLX_LIB) $(MLX_FLAGS) -o $(NAME)
-	
-$(NAME): $(OBJ) $(MLX_LIB)
-	$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
+all: $(MLX_LIB) $(NAME)
+
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 
 $(MLX_LIB):
-	make -C minilibx_macos
-
-clean:
-	rm -f $(OBJ)
-
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
+	@make -C $(MLX_DIR)
