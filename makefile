@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/03/23 12:59:34 by guisanto         ###   ########.fr        #
+#    Updated: 2025/03/23 17:01:12 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME): $(OBJS)
 
 # Como construir a biblioteca MLX
 $(MLX_LIB):
-	@echo "\033[1;33mCompiling mlx...\033[0m"
+	@echo "...\033[1;33mCompiling mlx...\033[0m"
 	@make -C minilibx-linux
 	@cp minilibx-linux/libmlx.a mlx/
 	@rm -rf minilibx-linux
