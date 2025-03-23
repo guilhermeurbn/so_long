@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/03/21 16:39:37 by guisanto         ###   ########.fr        #
+#    Updated: 2025/03/23 12:07:29 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,37 +14,47 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g -Iminilibx-linux
 
-ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx
+# Detectar sistema operacional (Linux ou macOS)
+ifeq ($(shell uname -s),Darwin)
+    MLX_FLAGS = -Lmlx -lmlx_Darwin -L/usr/X11/lib -lXext -lX11 -lm -framework OpenGL -framework AppKit
+    MLX_LIB = mlx/libmlx_Darwin.a
 else
-	INCLUDES = -I/opt/X11/include -Imlx
+    MLX_FLAGS = -Lmlx -lmlx -lXext -lX11
+    MLX_LIB = mlx/libmlx.a
 endif
 
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-
-
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
-
-# Arquivos fontes
+# Diretório do código fonte
 SRC = so_long.c utils.c
-
-# Gerar objetos automaticamente a partir dos arquivos fontes
 OBJS = $(SRC:.c=.o)
 
+# Regra principal: compilar o projeto com a biblioteca MLX
 all: $(MLX_LIB) $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+# Compilar arquivos .c para .o
+%.o: %.c
+	$(CC) $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
 
+# Como gerar o executável
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+	$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
+# Como construir a biblioteca MLX
 $(MLX_LIB):
-	@make -C $(MLX_DIR)
+	@echo "\033[1;33mCompiling mlx...\033[0m"
+	@make -C minilibx-linux
+	@cp minilibx-linux/libmlx.a mlx/
+	@rm -rf minilibx-linux
+
+# Limpar arquivos gerados
+clean:
+	rm -f $(OBJS)
+
+# Limpar arquivos gerados e o executável
+fclean: clean
+	rm -f $(NAME)
+
+# Recompilar do zero
+re: fclean all
+
