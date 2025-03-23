@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/23 14:11:17 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:18:15 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
 
 /* Inclusão da biblioteca MLX para Linux */
 #include "mlx/mlx.h"  // Caminho para a MinilibX no Linux
