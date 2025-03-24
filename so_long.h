@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/24 16:44:07 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:35:28 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vars
 {
     void *mlx;
     void *win;
+	int	holding_q;
 } t_vars;
 
 #endif
