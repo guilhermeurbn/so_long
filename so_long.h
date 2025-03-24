@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/23 17:07:25 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:44:07 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 #include "mlx/mlx.h"
 #include "libft/libft.h"
 #include "get_next_line/get_next_line.h"
+#include "so_long.xpm"
+
 
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	time_t	keypress_time;
-}	t_vars;
-
-int resize_window(int largura, int altura, t_vars *vars);
-
+    void *mlx;
+    void *win;
+} t_vars;
 
 #endif
