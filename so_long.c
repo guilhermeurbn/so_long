@@ -6,117 +6,60 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:02:46 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/25 14:51:28 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:36:13 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdlib.h>
 
-int expose(t_vars *vars)
+int leave_window(int keycode, t_data *data)
 {
-	printf("hello\n");
-	return (0);
-}
-int x_window(t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
-	return (0);
-}
-
-int key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == 113)
-		printf("print Q");
-	printf("hello from hook\n");
-	return (0);
-}
-
-int mouse_click(int keycode, t_vars *vars)
-{
-	printf("mouse\n");
-	return (0);
-}
-int key_pressed(int keycode, t_vars *vars)
-{
-	if (keycode == XK_q) 
+	if (keycode == 65307)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(0);
 	}
-	else 
-		printf("keycode: %d\n", keycode);
+}
+
+int render_next_frame(t_data *data)
+{
+
+	static int frame_count = 0;
+	static int color_switch = 15;
+	
+	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, data->x, data->y, data->color_index, "42");
+	data->x += 2.5;
+	if (data->x > 800)
+		data->x = 0;
+		
+	frame_count++;
+	if (frame_count >= color_switch)
+	{
+		if (data->color_index == 0xFF0000)
+			data->color_index = 0x00FF00;
+		else if (data->color_index == 0x00FF00)
+			data->color_index = 0x0000FF;
+		else
+			data->color_index = 0xFF0000;
+		frame_count = 0;
+	}
 	return (0);
 }
-int main()
+
+int main(void)
 {
-	t_vars vars;
+	t_data	data;
+
+	data.mlx_ptr = mlx_init();
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 800, 600, "arco iris ");
+	data.x = 400;
+	data.y = 300;
+	data.color_index = 0xFF0000;
 	
-	vars.mlx = mlx_init();
-
-	vars.win = mlx_new_window(vars.mlx, 800, 600, "So_long\n");
-	mlx_hook(vars.win, 12, 1L<<15, expose, &vars);
-	mlx_hook(vars.win, 17, 0, x_window, &vars);
-	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
-	mlx_mouse_hook(vars.win, mouse_click, &vars);
-	mlx_hook(vars.win, 2, 1L<<0, key_pressed, &vars);
-	mlx_loop(vars.mlx);
+	mlx_loop_hook(data.mlx_ptr, render_next_frame, &data);
+	mlx_key_hook(data.win_ptr, leave_window, &data);
+	mlx_loop(data.mlx_ptr);
+	return (0);	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-Codigo para descobrir qual e cada tecla!!
-
-
-#include <stdio.h>
-#include "so_long.h"
-
-int key_press(int keycode, t_vars *vars)
-{
-    printf("Keycode: %d\n", keycode);
-    if (keycode == 113) // Q no macOS (QWERTY US)
-    {
-        mlx_destroy_window(vars->mlx, vars->win);
-        exit(0);
-    }
-    return (0);
-}
-
-int main()
-{
-    t_vars vars;
-
-    vars.mlx = mlx_init();
-    vars.win = mlx_new_window(vars.mlx, 800, 600, "So_long");
-
-    mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
-    mlx_loop(vars.mlx);
-} */
