@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/26 13:37:14 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/30 17:48:27 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,23 @@
 #include "mlx/mlx.h"
 #include "libft/libft.h"
 #include "get_next_line/get_next_line.h"
-#include "so_long.xpm"
 
 #ifdef __linux__
 #include <X11/keysym.h>
 # endif
 
-typedef struct s_vars
+typedef struct s_data
 {
-    void            *img;
-    void            *mlx_ptr;
-    void            *win_ptr;
-    int             x;
-    int             y;
-    int             color_index;
-    unsigned int    move_count;
-} t_data;
+    void    *mlx_ptr;
+    void    *win_ptr;
+    void    *img;
+    void    *cursor_img; // Adicionando a imagem do cursor
+    int     img_width;
+    int     img_height;
+    int     cursor_x;
+    int     cursor_y;
+    int     move_count;
+    int     color_index;
+}   t_data;
 
 #endif
