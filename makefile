@@ -6,10 +6,15 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/03/24 12:54:01 by guisanto         ###   ########.fr        #
+#    Updated: 2025/03/30 20:13:32 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+BLUE = \033[1;34m
+RED = \033[1;31m
+RESET = \033[0m
 
 NAME = so_long
 
@@ -31,30 +36,36 @@ OBJS = $(SRC:.c=.o)
 
 # Regra principal: compilar o projeto com a biblioteca MLX
 all: $(MLX_LIB) $(NAME)
+	@echo "$(GREEN)✓ Compilação concluída com sucesso!$(RESET)"
 
 # Compilar arquivos .c para .o
 %.o: %.c
+	@echo "$(BLUE)Compilando: $<$(RESET)"
 	$(CC) $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
 
 # Como gerar o executável
 $(NAME): $(OBJS)
+	@echo "$(YELLOW)🔧 Ligando os arquivos...$(RESET)"
 	$(CC) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	@echo "$(GREEN)🚀 Executável pronto: $(NAME)$(RESET)"
 
 # Como construir a biblioteca MLX
 $(MLX_LIB):
-	@echo "...\033[1;33mCompiling mlx...\033[0m"
+	@echo "$(YELLOW)🔨 Compilando a minilibx...$(RESET)"
 	@make -C minilibx-linux
 	@cp minilibx-linux/libmlx.a mlx/
 	@rm -rf minilibx-linux
 
 # Limpar arquivos gerados
 clean:
+	@echo "$(RED)🗑  Removendo arquivos objeto...$(RESET)"
 	rm -f $(OBJS)
 
 # Limpar arquivos gerados e o executável
 fclean: clean
+	@echo "$(RED)🔥 Removendo executável...$(RESET)"
 	rm -f $(NAME)
 
 # Recompilar do zero
 re: fclean all
-
+	@echo "$(GREEN)🔄 Recompilação completa!$(RESET)"

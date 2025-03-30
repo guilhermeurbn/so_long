@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/30 17:48:27 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:23:58 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,18 @@
 
 typedef struct s_data
 {
-    void    *mlx_ptr;
-    void    *win_ptr;
-    void    *img;
-    void    *cursor_img; // Adicionando a imagem do cursor
-    int     img_width;
-    int     img_height;
-    int     cursor_x;
-    int     cursor_y;
+    void    *mlx_ptr;        // Ponteiro para a conexão com o servidor gráfico
+    void    *win_ptr;        // Ponteiro para a janela
+    void    *cursor_img;     // Ponteiro para a imagem do cursor
+    void    *texture_img;    // Ponteiro para a imagem da textura
+    int     cursor_x;        // Posição X do cursor
+    int     cursor_y;        // Posição Y do cursor
+    int     img_width;       // Largura da imagem do cursor
+    int     img_height;      // Altura da imagem do cursor
+    int     tex_width;       // Largura da textura
+    int     tex_height;      // Altura da textura
+    int     color_index;     // Cor do fundo ou outros elementos, se necessário
     int     move_count;
-    int     color_index;
-}   t_data;
+} t_data;
 
 #endif
