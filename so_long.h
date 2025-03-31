@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/30 20:23:58 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:35:32 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ typedef struct s_data
     int     color_index;     // Cor do fundo ou outros elementos, se necessário
     int     move_count;
 } t_data;
+
+t_data *game(void);
 
 #endif

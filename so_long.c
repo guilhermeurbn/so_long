@@ -5,59 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/30 22:22:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/30 22:22:34 by guisanto         ###   ########.fr       */
+/*   Created: 2025/03/31 13:53:51 by guisanto          #+#    #+#             */
+/*   Updated: 2025/03/31 13:54:08 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int leave_window(int keycode, t_data *data)
+t_data *game(void)
 {
+    static t_data x;
+    return (&x);
+}
+
+int leave_window(int keycode)
+{
+    t_data *data = game();
     if (keycode == 65307)
     {
-        mlx_destroy_image(data->mlx_ptr, data->texture_img);
-        mlx_destroy_image(data->mlx_ptr, data->cursor_img);
-        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+        if (data->mlx_ptr && data->win_ptr)
+        {
+            mlx_destroy_image(data->mlx_ptr, data->texture_img);
+            mlx_destroy_image(data->mlx_ptr, data->cursor_img);
+            mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+        }
         exit(0);
     }
     return (0);
 }
 
-int render_next_frame(t_data *data)
+int render_next_frame(void)
 {
-    static int first_frame = 1;
+    t_data *data = game();
     
-    // Desenha o fundo apenas uma vez
-    if (first_frame) 
+    int x, y;
+
+    if (!data->mlx_ptr || !data->win_ptr)
+        return (1);
+
+    mlx_clear_window(data->mlx_ptr, data->win_ptr);
+
+    y = 0;
+    while (y < 600)
     {
-        int x = 0;
-        int y = 0;
-		
-        // Desenha a textura no fundo
-        while (y < 600)
+        x = 0;
+        while (x < 800)
         {
-            x = 0;
-            while (x < 800)
-            {
-                mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->texture_img, x, y);
-                x += data->tex_width; // Repetir a textura no eixo X
-            }
-            y += data->tex_height; // Repetir a textura no eixo Y
+            mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->texture_img, x, y);
+            x += data->tex_width;
         }
-        first_frame = 0; // Garantir que a textura seja desenhada apenas uma vez
+        y += data->tex_height;
     }
 
-    // Apenas desenha o cursor na nova posição
     mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->cursor_img, data->cursor_x, data->cursor_y);
-
     return (0);
 }
 
-int keypressed(int keycode, t_data *data)
+int keypressed(int keycode)
 {
+    t_data *data = game();
     int step = 40;
+
+    if (!data->mlx_ptr || !data->win_ptr)
+        return (1);
 
     if (keycode == 'w' && data->cursor_y - step >= 0)
         data->cursor_y -= step;
@@ -67,38 +79,59 @@ int keypressed(int keycode, t_data *data)
         data->cursor_x -= step;
     if (keycode == 'd' && data->cursor_x + step <= 800 - data->img_width)
         data->cursor_x += step;
-    if (keycode == 65307) // ESC para sair
-        leave_window(keycode, data);
+    if (keycode == 65307)
+        leave_window(keycode);
+
     return (0);
+}
+
+int loop_hook(void)
+{
+    return render_next_frame();
 }
 
 int main(void)
 {
-    t_data data;
+    t_data *data = game();
 
-    data.mlx_ptr = mlx_init();
-    data.win_ptr = mlx_new_window(data.mlx_ptr, 800, 600, "arco iris ");
-    data.img_height = 800;
-    data.img_width = 600;
-    data.cursor_img = mlx_xpm_file_to_image(data.mlx_ptr, "cursor.xpm", &data.img_width, &data.img_height);
-    if (!data.cursor_img)
+    data->mlx_ptr = mlx_init();
+    if (!data->mlx_ptr)
     {
-        printf("error ao carregar o cursor.xpm\n");
+        printf("Erro ao inicializar MiniLibX\n");
         return (1);
     }
-    data.tex_height = 800;
-    data.tex_width = 600;
-    data.texture_img = mlx_xpm_file_to_image(data.mlx_ptr, "texture.xpm", &data.tex_width, &data.tex_height);
-    if (!data.texture_img)
+
+    data->win_ptr = mlx_new_window(data->mlx_ptr, 800, 600, "arco iris ");
+    if (!data->win_ptr)
     {
-        printf("error ao carregar a texture.xpm\n");
+        printf("Erro ao criar janela\n");
         return (1);
     }
-    data.cursor_x = 400;
-    data.cursor_y = 300;
+
+    data->img_height = 800;
+    data->img_width = 600;
+    data->cursor_img = mlx_xpm_file_to_image(data->mlx_ptr, "cursor.xpm", &data->img_width, &data->img_height);
+    if (!data->cursor_img)
+    {
+        printf("Erro ao carregar cursor.xpm\n");
+        return (1);
+    }
+
+    data->tex_height = 800;
+    data->tex_width = 600;
+    data->texture_img = mlx_xpm_file_to_image(data->mlx_ptr, "texture.xpm", &data->tex_width, &data->tex_height);
+    if (!data->texture_img)
+    {
+        printf("Erro ao carregar texture.xpm\n");
+        return (1);
+    }
+
+    data->cursor_x = 400;
+    data->cursor_y = 300;
+
+    mlx_loop_hook(data->mlx_ptr, loop_hook, NULL);
+    mlx_hook(data->win_ptr, 2, 1L << 0, keypressed, NULL);
+    mlx_loop(data->mlx_ptr);
     
-    mlx_loop_hook(data.mlx_ptr, render_next_frame, &data);
-    mlx_hook(data.win_ptr, 2, 1L<<0, keypressed, &data);
-    mlx_loop(data.mlx_ptr);
-    return (0);    
+    return (0);
 }
