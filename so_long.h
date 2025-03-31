@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/31 13:35:32 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:20:11 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 #include "mlx/mlx.h"
 #include "libft/libft.h"
 #include "get_next_line/get_next_line.h"
@@ -23,6 +24,10 @@
 #ifdef __linux__
 #include <X11/keysym.h>
 # endif
+
+#define MLX_SYNC_IMAGE_WRITABLE		1
+#define MLX_SYNC_WIN_FLUSH_CMD		2
+#define MLX_SYNC_WIN_CMD_COMPLETED	3
 
 typedef struct s_data
 {

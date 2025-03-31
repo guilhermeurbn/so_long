@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 13:53:51 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/31 13:54:08 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:14:09 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ int render_next_frame(void)
 
     if (!data->mlx_ptr || !data->win_ptr)
         return (1);
-
     mlx_clear_window(data->mlx_ptr, data->win_ptr);
-
     y = 0;
     while (y < 600)
     {
@@ -58,7 +56,6 @@ int render_next_frame(void)
         }
         y += data->tex_height;
     }
-
     mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->cursor_img, data->cursor_x, data->cursor_y);
     return (0);
 }
@@ -66,11 +63,10 @@ int render_next_frame(void)
 int keypressed(int keycode)
 {
     t_data *data = game();
-    int step = 40;
+    int step = 45;
 
     if (!data->mlx_ptr || !data->win_ptr)
         return (1);
-
     if (keycode == 'w' && data->cursor_y - step >= 0)
         data->cursor_y -= step;
     if (keycode == 's' && data->cursor_y + step <= 600 - data->img_height)
@@ -81,13 +77,13 @@ int keypressed(int keycode)
         data->cursor_x += step;
     if (keycode == 65307)
         leave_window(keycode);
-
     return (0);
 }
 
 int loop_hook(void)
 {
-    return render_next_frame();
+    usleep(30000);
+    return (render_next_frame());
 }
 
 int main(void)
@@ -108,17 +104,14 @@ int main(void)
         return (1);
     }
 
-    data->img_height = 800;
-    data->img_width = 600;
+    data->img_width = 800;
+    data->img_height = 600;
     data->cursor_img = mlx_xpm_file_to_image(data->mlx_ptr, "cursor.xpm", &data->img_width, &data->img_height);
     if (!data->cursor_img)
     {
         printf("Erro ao carregar cursor.xpm\n");
         return (1);
     }
-
-    data->tex_height = 800;
-    data->tex_width = 600;
     data->texture_img = mlx_xpm_file_to_image(data->mlx_ptr, "texture.xpm", &data->tex_width, &data->tex_height);
     if (!data->texture_img)
     {
@@ -126,8 +119,8 @@ int main(void)
         return (1);
     }
 
-    data->cursor_x = 400;
-    data->cursor_y = 300;
+    data->cursor_x = data->img_width / 2 - data->img_width / 2;
+    data->cursor_y = data->img_height / 2 - data->img_height / 2;
 
     mlx_loop_hook(data->mlx_ptr, loop_hook, NULL);
     mlx_hook(data->win_ptr, 2, 1L << 0, keypressed, NULL);
