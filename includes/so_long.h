@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/01 16:18:27 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:21:34 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,47 +27,35 @@
 
 typedef struct s_game
 {
-    void    *mlx;
-    void    *win;
-    t_map   map;
-    t_player    player;
-    t_collectible   collectible;
-    t_exit  exit;
-    int   total_collectible;
-}   t_game;
+	void *mlx;
+	void *win;
+	char **map;
+	void *img_backg;
+	void *img_collect;
+	void *img_exit
+	int	map_w;
+	int map_h;
+	int n_colect;
+	int n_player;
+	int n_exit;
+	int x_player;
+	int y_player;
+	int moves;
+	int endgame;
 
+} t_game;
 
-
-typedef struct s_player
-{
-    int     x;
-    int     y;
-    int     *img;
-    int     move;
-}   t_player;
-
-typedef struct s_map
-{
-    int     x;
-    int     y;
-    int     *img;
-}   t_map;
-
-typedef struct s_collectible
-{
-    int     x;
-    int     y;
-    int     *img;
-    int     collect;
-}   t_collectible;
-
-typedef struct s_exit
-{
-    int     x;
-    int     y;
-    int     *img;
-    int     open;
-    
-}   t_exit;
+void	img_draw(t_game *game, void *image, int x, int y);
+int		map_draw(t_game *game);
+void	game_init(t_game *game);
+char	**read_map(char *path);
+int		map_checker(t_game *game);
+void	gameplay(t_game *game);
+void	player_w(t_game *game);
+void	player_d(t_game *game);
+void	player_s(t_game *game);
+void	player_a(t_game *game);
+int		exit_game(t_game *game);
+void	free_map(char **map);
 
 #endif
