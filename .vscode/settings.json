@@ -5,7 +5,9 @@
 		"libft.h": "c",
 		"stdlib.h": "c",
 		"stdio.h": "c",
-		"get_next_line.h": "c"
+		"get_next_line.h": "c",
+		"__tree": "c",
+		"map": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

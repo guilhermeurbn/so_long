@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/04/01 16:50:49 by guisanto         ###   ########.fr        #
+#    Updated: 2025/04/11 16:07:33 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ else
 endif
 
 # Arquivos fonte
-SRC_FILES = so_long.c utils.c
+SRC_FILES = $(wildcard $(SRC_DIR)/**/*.c)
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

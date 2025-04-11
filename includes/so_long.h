@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/10 12:21:34 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:36:23 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "mlx/mlx.h"
+#include "mlx.h"
 #include "libft/libft.h"
 #include "get_next_line/get_next_line.h"
 
@@ -31,8 +31,12 @@ typedef struct s_game
 	void *win;
 	char **map;
 	void *img_backg;
-	void *img_collect;
+	void *img_wall;
+	void *img_player;
+	void *img_colect;
 	void *img_exit
+	int	img_w;
+	int	img_h;
 	int	map_w;
 	int map_h;
 	int n_colect;
@@ -44,6 +48,20 @@ typedef struct s_game
 	int endgame;
 
 } t_game;
+
+# define KEY_ESQ 65307
+# define KEY_Q 113
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+
+# define KEY_UP 65361
+# define KEY_LEFT 65362
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+
 
 void	img_draw(t_game *game, void *image, int x, int y);
 int		map_draw(t_game *game);
