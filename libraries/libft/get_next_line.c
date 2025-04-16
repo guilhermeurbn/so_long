@@ -1,18 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 12:34:56 by guisanto          #+#    #+#             */
-/*   Updated: 2025/03/21 12:44:00 by guisanto         ###   ########.fr       */
+/*   Created: 2024/12/11 12:34:58 by guisanto          #+#    #+#             */
+/*   Updated: 2025/04/16 18:44:09 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 5
+#endif
+
+char	*get_next_line(int fd)
+{
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*next_line;
+	int			bytes_read;
+
+	next_line = NULL;
+	bytes_read = 1;
+	while ((fd >= 0 && BUFFER_SIZE > 0) && bytes_read > 0)
+	{
+		if (buffer[0])
+		{
+			next_line = ft_strjoinn(next_line, buffer);
+			if (!next_line)
+				return (NULL);
+			if (next_line[ft_strlenn(next_line) - 1] == '\n')
+				break ;
+		}
+		else
+		{
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+			if (bytes_read < 0)
+				return (free(next_line), NULL);
+			buffer[bytes_read] = '\0';
+		}
+	}
+	return (next_line);
+}
+int	ft_strlenn(char *str)
 {
 	int	i;
 
@@ -52,3 +85,19 @@ char	*ft_strjoinn(char *next_line, char *buffer)
 	buffer[i] = '\0';
 	return (dest);
 }
+/* int main()
+{
+	int fd;
+	char *next_line;
+
+	fd = open("text.txt", O_RDONLY);
+	if (fd == -1)
+		perror ("error");
+	while((next_line = get_next_line(fd)) != NULL )
+	{
+		printf("%s", next_line);
+		free(next_line);
+	}
+	close(fd);
+	return (0);
+}*/

@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 17:41:22 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:45:20 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "../libraries/minilibx/mlx.h"
+#include "../libraries/mlx/mlx.h"
 # include "../libraries/libft/libft.h"
-#include "../libraries/get_next_line/get_next_line.h"
 
 #ifdef __linux__
 #include <X11/keysym.h>

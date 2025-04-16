@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 17:23:16 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 17:47:52 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:30:46 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void game_events(int keycode, t_game *game)
 }
 static int keypress(int keycode, t_game *game)
 {
-    if(keypress == 65307 || keypress == 113)
+    if (keycode == 65307 || keycode == 113)
         exit_game(game);
     else if(!game->endgame)
     {
@@ -46,7 +46,7 @@ static int keypress(int keycode, t_game *game)
     }
     return (0);
 }
-int gameplay(t_game *game)
+void gameplay(t_game *game)
 {
     mlx_hook(game->win, 2, 1L<<0, keypress, &game);
     mlx_hook(game->win, 17, 1L<<17, exit_game, &game);

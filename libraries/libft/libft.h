@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:27:31 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 17:30:23 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:44:49 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include <fcntl.h>
+#include <stddef.h>
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -53,6 +55,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
-int	ft_strlen(const char *s);
+int	    ft_strlen(const char *s);
+
+char	*get_next_line(int fd);
+int     ft_strlenn(char *str);
+char	*ft_strjoinn(char *next_line, char *buffer);
+
 
 #endif
