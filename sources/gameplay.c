@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 17:23:16 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 01:22:41 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:47:52 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void game_events(int keycode, t_game *game)
 {   
-    if (keycode == KEY_W || keycode == KEY_UP)
+    if (keycode == 119 || keycode == 65361)
     {
         game->y_player -= 1;
         player_w(game);
     }
-    else if (keycode == KEY_S || keycode == KEY_DOWN)
+    else if (keycode == 115)
     {
         game->y_player += 1;
         player_s(game);
     }
-    else if (keycode == KEY_D || keycode == KEY_RIGHT)
+    else if (keycode == 100)
     {
         game->x_player += 1;
         player_d(game);
     }
-    else if (keycode == KEY_A || keycode == KEY_LEFT)
+    else if (keycode == 97)
     {
         game->x_player -= 1;
         player_a(game);
@@ -37,7 +37,7 @@ static void game_events(int keycode, t_game *game)
 }
 static int keypress(int keycode, t_game *game)
 {
-    if(keypress == KEY_ESQ || keypress == KEY_Q)
+    if(keypress == 65307 || keypress == 113)
         exit_game(game);
     else if(!game->endgame)
     {
