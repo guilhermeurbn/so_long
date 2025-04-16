@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/16 18:03:16 by guisanto          #+#    #+#              #
-#    Updated: 2025/04/11 16:07:33 by guisanto         ###   ########.fr        #
+#    Updated: 2025/04/16 01:37:06 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 
 NAME = so_long
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I$(INC_DIR)
 
 # Diretórios
@@ -38,9 +38,16 @@ else
 endif
 
 # Arquivos fonte
-SRC_FILES = $(wildcard $(SRC_DIR)/**/*.c)
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+SRC = $(SRC_DIR)/so_long.c \
+      $(SRC_DIR)/draw.c \
+      $(SRC_DIR)/init.c \
+      $(SRC_DIR)/read_map.c \
+      $(SRC_DIR)/map_validate.c \
+      $(SRC_DIR)/player_update.c \
+      $(SRC_DIR)/gameplay.c \
+      $(SRC_DIR)/exit_game.c
+	  
+OBJECTS = $(SOURCES:.c=.o)
 
 # Regra principal: compilar o projeto
 all: $(MLX_LIB) $(NAME)
@@ -56,15 +63,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Como gerar o executável
-$(NAME): $(OBJ)
+$(NAME): $(OBJECTS)
 	@echo "$(YELLOW)🔧 Ligando os arquivos...$(RESET)"
-	$(CC) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJECTS) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(GREEN)🚀 Executável pronto: $(NAME)$(RESET)"
 
 # Como construir a biblioteca MLX
 $(MLX_LIB):
 	@echo "$(YELLOW)🔨 Compilando a minilibx...$(RESET)"
-	@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) all
 
 # Limpar arquivos gerados
 clean:
