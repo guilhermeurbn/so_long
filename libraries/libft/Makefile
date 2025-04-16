@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/14 14:50:55 by guisanto          #+#    #+#              #
-#    Updated: 2024/11/14 14:51:00 by guisanto         ###   ########.fr        #
+#    Updated: 2025/04/16 18:57:42 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS	= ft_isalpha.c \
 	   ft_putchar_fd.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
+	   get_next_line.c \
 	   ft_putnbr_fd.c
 
 CFLAGS = -Wall -Werror -Wextra -g -I $(INCLUDES_DIR)
