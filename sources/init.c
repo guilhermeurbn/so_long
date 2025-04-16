@@ -6,13 +6,13 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:24:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 01:31:28 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:06:36 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int  img_init(t_game *game)
+static void  img_init(t_game *game)
 {
     game->img_backg = mlx_xpm_file_to_image
         (game->mlx, "images/wall.xpm", &game->img_w, &game->img_h);
@@ -27,9 +27,10 @@ static int  img_init(t_game *game)
 static void size_window_init(t_game *game)
 {
     int i;
-    game->map_w = map[0] * 32;
+
+    game->map_w = ft_strlen(game->map[0]) * 32;
     i = 0;
-    while(game.map[i] != '\0')
+    while(game->map[i])
         i++;
     game->map_h = i * 32;
 }

@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:02:42 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/11 17:20:00 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:02:28 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int map_draw(t_game *game)
             else if (game->map[y][x] == '0')
                 img_draw(game, game->img_backg, x, y);
             else if (game->map[y][x] == 'P')
-                player_draw(game, x, y);
+                player_draw(game, game->img_player,x, y);
             else if (game->map[y][x] == 'C')
                 img_draw(game, game->img_colect, x, y);
             else if (game->map[y][x] == 'E')

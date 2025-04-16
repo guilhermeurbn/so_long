@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:07:58 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/11 17:15:30 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:01:12 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static int argv_checker(char *argv)
 {
 	int i;
-	
+
 	if (!argv)
-		return (0)
+		return (0);
 	i = 0;
 	while(argv[i])
 		i++;
 	i -= 1;
-	if (argv[i] == 'r' && agrv[i - 1] == 'e' && argv[i - 2] == 'b' && argv[i - 3] == '.')
+	if (argv[i] == 'r' && argv[i - 1] == 'e' && argv[i - 2] == 'b' && argv[i - 3] == '.')
 		return (1);
 	return (0);
 }

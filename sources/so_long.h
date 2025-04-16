@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 01:36:42 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:00:27 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "mlx.h"
-#include "libft/libft.h"
-#include "get_next_line/get_next_line.h"
+#include "../libraries/minilibx/mlx.h"
+# include "../libraries/libft/libft.h"
+#include "../libraries/get_next_line/get_next_line.h"
 
 #ifdef __linux__
 #include <X11/keysym.h>
@@ -34,7 +34,7 @@ typedef struct s_game
 	void *img_wall;
 	void *img_player;
 	void *img_colect;
-	void *img_exit
+	void *img_exit;
 	int	img_w;
 	int	img_h;
 	int	map_w;

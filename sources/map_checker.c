@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:16:21 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/11 13:08:04 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:10:47 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 int	map_checker(t_game *game)
 {
-	if (!is_retangular(game->map))
-		return (0);
-	if (!is_wall(game->map))
-		return (0);
-	if (!is_elements_and_valid(game))
-		return (0);
-	return (1);
+	if (!is_retangular(game->map) && is_wall(game->map)
+		&& is_elements_and_valid(game))
+			return (1);
+	return (0);
 }
 
 static int	is_retangular(char **map)
@@ -74,11 +71,11 @@ static int	is_elements_and_valid(t_game *game)
 {
 	int i;
 	int j;
-	
+
 	game->n_player = 0;
 	game->n_exit = 0;
 	game->n_colect = 0;
-	
+
 	i = 0;
 	while(game->map[i])
 	{
