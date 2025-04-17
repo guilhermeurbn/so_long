@@ -60,25 +60,25 @@ all:			$(NAME)
 bonus:			$(NAME_BONUS)
 
 $(NAME):		$(LIBFT) $(MINILIBX) $(OBJECTS) $(HEADER)
-				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MINILIBX) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MINILIBX) $(MLX_FLAGS) -o $(NAME)
 
 $(NAME_BONUS):		$(LIBFT) $(MINILIBX) $(OBJECTS_BONUS) $(HEADER_BONUS)
 					$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) $(MINILIBX) $(MLX_FLAGS) -o $(NAME_BONUS)
 
 $(LIBFT):
-				$(MAKE) -C $(LIBFT_PATH)
+	@$(MAKE) -C $(LIBFT_PATH)
 
 $(MINILIBX):
-				$(MAKE) -C $(MINILIBX_PATH)
+	@$(MAKE) -C $(MINILIBX_PATH)
 
 clean:
-				$(MAKE) -C $(LIBFT_PATH) clean
-				$(MAKE) -C $(MINILIBX_PATH) clean
-				$(RM) $(OBJECTS) $(OBJECTS_BONUS)
+	@$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(MINILIBX_PATH) clean
+	@$(RM) $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean:			clean
-				$(MAKE) -C $(LIBFT_PATH) fclean
-				$(RM) $(NAME) $(NAME_BONUS)
+	@$(MAKE) -C $(LIBFT_PATH) fclean
+	@$(RM) $(NAME) $(NAME_BONUS)
 
 re:				fclean all
 

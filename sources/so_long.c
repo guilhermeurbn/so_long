@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:07:58 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 17:01:12 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:39:35 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ int main(int argc, char **argv)
 			gameplay(&game);
 			mlx_loop(game.mlx);
 		}
+		else
+		{
+			if(game.map)
+				free_map(game.map);
+			printf("Error\nInvalid Map");
+			exit(1);
+		}
+	}
+	else
+	{
+		printf("Error\nInvalid Syntax");
+		exit(1);
 	}
 	return (0);
 }

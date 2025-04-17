@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 18:45:20 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:04:46 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
 #include "../libraries/mlx/mlx.h"
@@ -74,8 +75,8 @@ void	player_s(t_game *game);
 void	player_a(t_game *game);
 int		exit_game(t_game *game);
 void	free_map(char **map);
-int		is_retangular(char **map);
-int		is_wall(char **map);
-int		is_elements_and_valid(t_game *game);
+//int		is_retangular(char **map);
+//int		is_wall(char **map);
+//int		is_elements_and_valid(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:24:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 17:06:36 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:55:29 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 static void  img_init(t_game *game)
 {
     game->img_backg = mlx_xpm_file_to_image
-        (game->mlx, "images/wall.xpm", &game->img_w, &game->img_h);
+    	(game->mlx, "images/background.xpm", &game->img_w, &game->img_h);
     game->img_player = mlx_xpm_file_to_image
-        (game->mlx, "images/iron_man.xpm", &game->img_w, &game->img_h);
+    	(game->mlx, "images/iron_man1.xpm", &game->img_w, &game->img_h);
     game->img_wall = mlx_xpm_file_to_image
-        (game->mlx, "images/wall.xpm", &game->img_w, &game->img_h);
+    	(game->mlx, "images/wall.xpm", &game->img_w, &game->img_h);
     game->img_colect = mlx_xpm_file_to_image
-        (game->mlx, "images/colect.xpm", &game->img_w, &game->img_h);
+    	(game->mlx, "images/colect.xpm", &game->img_w, &game->img_h);
+	game->img_exit = mlx_xpm_file_to_image
+		(game->mlx, "images/exit_open.xpm", &game->img_w, &game->img_h);
 }
 
 static void size_window_init(t_game *game)

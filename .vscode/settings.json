@@ -1,6 +1,7 @@
 {
     "C_Cpp.default.compilerPath": "/usr/bin/clang++",
     "files.associations": {
-        "mlx.h": "c"
-    }
+		"mlx.h": "c",
+		"so_long.h": "c"
+	}
 }
