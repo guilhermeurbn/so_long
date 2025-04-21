@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:50:56 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/04/17 18:59:15 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:28:44 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	is_pec(t_game *game)
 		}
 		i++;
 	}
-	if (game->n_player != 1 || game->n_exit == 0 || game->n_colect == 0)
+	if (game->n_player != 1 || game->n_exit != 1 || game->n_colect == 0)
 		return (0);
 	return (1);
 }
