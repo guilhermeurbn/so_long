@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/04/21 12:44:40 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:09:40 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static void	player_update_image(char key, t_game *game)
 	mlx_destroy_image(game->mlx, game->img_player);
 	if (key == 'w')
 		game->img_player = mlx_xpm_file_to_image
-			(game->mlx, "images/iron_man1.xpm", &game->img_w, &game->img_h);
+			(game->mlx, "images/iron_man2.xpm", &game->img_w, &game->img_h);
 	else if (key == 's')
 		game->img_player = mlx_xpm_file_to_image
-			(game->mlx, "images/iron_man2.xpm", &game->img_w, &game->img_h);
+			(game->mlx, "images/iron_man1.xpm", &game->img_w, &game->img_h);
 	else if (key == 'd')
 		game->img_player = mlx_xpm_file_to_image
-			(game->mlx, "images/iron_man1.xpm", &game->img_w, &game->img_h);
+			(game->mlx, "images/iron_man2.xpm", &game->img_w, &game->img_h);
 	else if (key == 'a')
 		game->img_player = mlx_xpm_file_to_image
-			(game->mlx, "images/iron_man2.xpm", &game->img_w, &game->img_h);
+			(game->mlx, "images/iron_man1.xpm", &game->img_w, &game->img_h);
 }
 
 void	player_w(t_game *game)
