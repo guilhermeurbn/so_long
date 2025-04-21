@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 01:23:24 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/17 18:29:47 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:46:09 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void free_map(char **map)
 
 int exit_game(t_game *game)
 {
-    free_map(game->map);
+	free_map(game->map);
 	mlx_destroy_image(game->mlx, game->img_backg);
 	mlx_destroy_image(game->mlx, game->img_wall);
 	mlx_destroy_image(game->mlx, game->img_player);

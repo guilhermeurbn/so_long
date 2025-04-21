@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/04/21 16:31:03 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:50:19 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	player_w(t_game *game)
 		game->map[game->y_player + 1][game->x_player] = '0';
 		game->moves++;
 		game->endgame = 1;
-		mlx_clear_window(game->mlx, game->win);
+		exit_game(game);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -65,7 +65,7 @@ void	player_s(t_game *game)
 		game->map[game->y_player - 1][game->x_player] = '0';
 		game->moves++;
 		game->endgame = 1;
-		mlx_clear_window(game->mlx, game->win);
+		exit_game(game);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -92,7 +92,7 @@ void	player_d(t_game *game)
 		game->map[game->y_player][game->x_player - 1] = '0';
 		game->moves++;
 		game->endgame = 1;
-		mlx_clear_window(game->mlx, game->win);
+		exit_game(game);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -119,7 +119,7 @@ void	player_a(t_game *game)
 		game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
 		game->endgame = 1;
-		mlx_clear_window(game->mlx, game->win);
+		exit_game(game);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
