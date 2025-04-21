@@ -36,7 +36,7 @@ else
 endif
 
 .c.o:
-				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all:			$(NAME)
 

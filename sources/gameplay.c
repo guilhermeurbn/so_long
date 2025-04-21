@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 17:23:16 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/21 16:09:23 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:27:45 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,38 @@
 
 static void game_events(int keycode, t_game *game)
 {
-    if (keycode == 119)
+    if (keycode == KEY_W || keycode == ARROW_UP)
     {
         game->y_player -= 1;
         player_w(game);
     }
-    else if (keycode == 115)
+    else if (keycode == KEY_S || keycode == ARROW_DOWN)
     {
         game->y_player += 1;
         player_s(game);
     }
-    else if (keycode == 100)
+    else if (keycode == KEY_D || keycode == ARROW_RIGHT)
     {
         game->x_player += 1;
         player_d(game);
     }
-    else if (keycode == 97)
+    else if (keycode == KEY_A || keycode == ARROW_LEFT)
     {
         game->x_player -= 1;
         player_a(game);
     }
 }
+
 static int keypress(int keycode, t_game *game)
 {
-    if (keycode == 65307 || keycode == 113)
+    if (keycode == KEY_ESC || keycode == KEY_Q)
         exit_game(game);
     else if(!game->endgame)
     {
         game_events(keycode, game);
-        printf("Moves:%d\n", game->moves);
+        write(1, "\033[1;33mMoves: \033[0m", 19);
+        ft_putnbr_fd(game->moves, 1);
+        write(1, "\n", 1);
     }
     return (0);
 }
