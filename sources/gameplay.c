@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 17:23:16 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/21 15:10:47 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:55:48 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void game_events(int keycode, t_game *game)
 {
     if (keycode == 119)
     {
-        game->y_player -= 1;
+        game->y_player -= 0.5;
         player_w(game);
     }
     else if (keycode == 115)
