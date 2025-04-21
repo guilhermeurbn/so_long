@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:24:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/21 15:09:03 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:01:16 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void  img_init(t_game *game)
     game->img_colect = mlx_xpm_file_to_image
     	(game->mlx, "images/colect.xpm", &game->img_w, &game->img_h);
 	game->img_exit = mlx_xpm_file_to_image
-		(game->mlx, "images/exit_open.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "images/exit_close.xpm", &game->img_w, &game->img_h);
 }
 
 static void size_window_init(t_game *game)

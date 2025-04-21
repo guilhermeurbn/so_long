@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/04/21 15:09:40 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:31:03 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	player_w(t_game *game)
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_colect == 0)
 	{
-		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player + 1][game->x_player] = '0';
 		game->moves++;
 		game->endgame = 1;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -46,12 +46,12 @@ void	player_w(t_game *game)
 		game->y_player += 1;
 	else
 	{
-		mlx_clear_window(game->mlx, game->win);
 		if (game->map[game->y_player][game->x_player] == 'C')
 			game->n_colect -= 1;
 		game->map[game->y_player][game->x_player] = 'P';
 		game->map[game->y_player + 1][game->x_player] = '0';
 		game->moves++;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -62,10 +62,10 @@ void	player_s(t_game *game)
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_colect == 0)
 	{
-		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player - 1][game->x_player] = '0';
 		game->moves++;
 		game->endgame = 1;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -73,12 +73,12 @@ void	player_s(t_game *game)
 		game->y_player -= 1;
 	else
 	{
-		mlx_clear_window(game->mlx, game->win);
 		if (game->map[game->y_player][game->x_player] == 'C')
 			game->n_colect -= 1;
 		game->map[game->y_player][game->x_player] = 'P';
 		game->map[game->y_player - 1][game->x_player] = '0';
 		game->moves++;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -89,10 +89,10 @@ void	player_d(t_game *game)
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_colect == 0)
 	{
-		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player][game->x_player - 1] = '0';
 		game->moves++;
 		game->endgame = 1;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -100,12 +100,12 @@ void	player_d(t_game *game)
 		game->x_player -= 1;
 	else
 	{
-		mlx_clear_window(game->mlx, game->win);
 		if (game->map[game->y_player][game->x_player] == 'C')
 			game->n_colect -= 1;
 		game->map[game->y_player][game->x_player] = 'P';
 		game->map[game->y_player][game->x_player - 1] = '0';
 		game->moves++;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -116,10 +116,10 @@ void	player_a(t_game *game)
 	if (game->map[game->y_player][game->x_player] == 'E'
 			&& game->n_colect == 0)
 	{
-		mlx_clear_window(game->mlx, game->win);
 		game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
 		game->endgame = 1;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == '1'
@@ -127,12 +127,12 @@ void	player_a(t_game *game)
 		game->x_player += 1;
 	else
 	{
-		mlx_clear_window(game->mlx, game->win);
 		if (game->map[game->y_player][game->x_player] == 'C')
 			game->n_colect -= 1;
 		game->map[game->y_player][game->x_player] = 'P';
 		game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
+		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
