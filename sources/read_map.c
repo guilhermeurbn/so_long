@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:03:42 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/10 11:59:52 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 12:39:29 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ char    **read_map(char *path)
 	if (fd == -1)
 		return (NULL);
 	holder = ft_strdup("");
-	while(1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break;
-		holder_map = ft_strjoin(holder, line);
-		free(line);
-		free(holder);
-	}
+	while (1)
+{
+	line = get_next_line(fd);
+	if (!line)
+		break;
+	holder_map = ft_strjoin(holder, line);
+	free(holder);
+	free(line);
+	holder = holder_map;
+}
 	map = ft_split(holder_map, '\n');
 	free(holder_map);
 	close(fd);

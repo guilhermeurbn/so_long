@@ -6,14 +6,14 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:34:58 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/16 18:56:29 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/21 12:29:58 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
+# define BUFFER_SIZE 50
 #endif
 
 char	*get_next_line(int fd)
