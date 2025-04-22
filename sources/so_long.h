@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:20 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/21 17:20:16 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:13:49 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,5 @@ void	player_s(t_game *game);
 void	player_a(t_game *game);
 int		exit_game(t_game *game);
 void	free_map(char **map);
-//int		is_retangular(char **map);
-//int		is_wall(char **map);
-//int		is_elements_and_valid(t_game *game);
 
 #endif
