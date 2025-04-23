@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:34:58 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/21 12:29:58 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/23 20:11:40 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*get_next_line(int fd)
 	}
 	return (next_line);
 }
+
 int	ft_strlenn(char *str)
 {
 	int	i;

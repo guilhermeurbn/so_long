@@ -13,11 +13,11 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
+# include <fcntl.h>
+# include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+# include <unistd.h>
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -36,7 +36,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -55,11 +55,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
-int	    ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 
 char	*get_next_line(int fd);
-int     ft_strlenn(char *str);
+int		ft_strlenn(char *str);
 char	*ft_strjoinn(char *next_line, char *buffer);
-
 
 #endif

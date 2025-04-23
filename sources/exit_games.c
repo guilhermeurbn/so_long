@@ -12,20 +12,20 @@
 
 #include "so_long.h"
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
-int exit_game(t_game *game)
+int	exit_game(t_game *game)
 {
 	free_map(game->map);
 	mlx_destroy_image(game->mlx, game->img_backg);
@@ -35,7 +35,7 @@ int exit_game(t_game *game)
 	mlx_destroy_image(game->mlx, game->img_exit);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
-    free(game->mlx);
-    exit(0);
-    return (0);
+	free(game->mlx);
+	exit(0);
+	return (0);
 }
