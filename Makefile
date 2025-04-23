@@ -11,7 +11,7 @@ SOURCES_FILES	=	so_long.c \
 					init.c \
 					map_checker.c \
 					player_update.c \
-					read_map.c 
+					read_map.c
 
 SOURCES_DIR		=	sources
 
@@ -24,7 +24,7 @@ OBJECTS			= 	$(SOURCES:.c=.o)
 NAME			=	so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -W -g -Iminilibx-linux
+CFLAGS = -Wall -Wextra -Werror -g -Iminilibx-linux
 
 # Detectar sistema operacional (Linux ou macOS)
 ifeq ($(shell uname -s),Darwin)
