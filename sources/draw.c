@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:02:42 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/22 10:36:27 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:18:21 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	exit_draw(t_game *game, int x, int y)
 		mlx_destroy_image(game->mlx, game->img_exit);
 		game->img_exit = mlx_xpm_file_to_image
 			(game->mlx, "images/exit_open.xpm", &game->img_w, &game->img_h);
+		img_draw(game, game->img_exit, x, y);
 	}
-	img_draw(game, game->img_exit, x, y);
 }
 
 int	map_draw(t_game *game)
