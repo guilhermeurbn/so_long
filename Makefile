@@ -11,6 +11,7 @@ SOURCES_FILES	=	so_long.c \
 					init.c \
 					map_checker.c \
 					player_update.c \
+					flood_fill.c \
 					read_map.c
 
 SOURCES_DIR		=	sources
