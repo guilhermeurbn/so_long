@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afpachec <afpachec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:02:42 by guisanto          #+#    #+#             */
-/*   Updated: 2025/09/16 12:12:56 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:55:59 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ static void	player_draw(t_game *game, void *image, int x, int y)
 
 static void	exit_draw(t_game *game, int x, int y)
 {
-	if (game->n_colect == 0)
-	{
-		mlx_destroy_image(game->mlx, game->img_exit);
-		game->img_exit = mlx_xpm_file_to_image
-			(game->mlx, "images/exit_open.xpm", &game->img_w, &game->img_h);
-		img_draw(game, game->img_exit, x, y);
-	}
+	char	*path;
+
+	if (game->n_colect)
+		path = "images/exit_close.xpm";
+	else
+		path = "images/exit_open.xpm";
+	mlx_destroy_image(game->mlx, game->img_exit);
+	game->img_exit = mlx_xpm_file_to_image
+		(game->mlx, path, &game->img_w, &game->img_h);
+	img_draw(game, game->img_exit, x, y);
 }
 
 int	map_draw(t_game *game)
@@ -47,7 +50,6 @@ int	map_draw(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			img_draw(game, game->img_backg, x, y);
 			if (game->map[y][x] == '1')
 				img_draw(game, game->img_wall, x, y);
 			else if (game->map[y][x] == 'P')
@@ -56,6 +58,8 @@ int	map_draw(t_game *game)
 				img_draw(game, game->img_colect, x, y);
 			else if (game->map[y][x] == 'E')
 				exit_draw(game, x, y);
+			else
+				img_draw(game, game->img_backg, x, y);
 			x++;
 		}
 		y++;

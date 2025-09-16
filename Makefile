@@ -24,8 +24,8 @@ OBJECTS			= 	$(SOURCES:.c=.o)
 
 NAME			=	so_long
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -Iminilibx-linux
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -Iminilibx-Linux
 
 # Detectar sistema operacional (Linux ou macOS)
 ifeq ($(shell uname -s),Darwin)
@@ -55,7 +55,7 @@ clean:
 	@$(MAKE) -C $(MINILIBX_PATH) clean
 	@$(RM) $(OBJECTS)
 
-fclean:			clean
+fclean: clean
 	@$(MAKE) -C $(LIBFT_PATH) fclean
 	@$(RM) $(NAME)
 

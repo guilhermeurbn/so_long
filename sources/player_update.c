@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_update.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afpachec <afpachec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/09/16 12:12:42 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:54:05 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	player_w(t_game *game)
 		if (game->map[game->y_player + 1][game->x_player] != 'E')
 			game->map[game->y_player + 1][game->x_player] = '0';
 		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -78,7 +77,6 @@ void	player_s(t_game *game)
 		if (game->map[game->y_player - 1][game->x_player] != 'E')
 			game->map[game->y_player - 1][game->x_player] = '0';
 		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -105,7 +103,6 @@ void	player_d(t_game *game)
 		if (game->map[game->y_player][game->x_player - 1] != 'E')
 			game->map[game->y_player][game->x_player - 1] = '0';
 		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
@@ -132,7 +129,6 @@ void	player_a(t_game *game)
 		if (game->map[game->y_player][game->x_player + 1] != 'E')
 			game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
-		mlx_clear_window(game->mlx, game->win);
 		map_draw(game);
 	}
 }
