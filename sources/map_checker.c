@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:50:56 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/09/16 10:23:55 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/16 11:23:23 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,8 @@ static int	is_validate(char **map)
 
 int	map_checker(t_game *game)
 {
-	printf("map_checker: starting checks: is_retangular, is_wall, is_pec, is_validate, checker_E_C\n");
 	if (is_retangular(game->map) && is_wall(game->map) && is_pec(game)
-		&& is_validate(game->map) && checker_E_C(game))
+		&& is_validate(game->map) && checker_e_c(game))
 		return (1);
 	return (0);
 }

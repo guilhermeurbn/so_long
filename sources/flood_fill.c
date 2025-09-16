@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 10:23:13 by guisanto          #+#    #+#             */
-/*   Updated: 2025/09/16 10:45:06 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/16 11:20:24 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	find_player(char **map, int *x, int *y)
 	return (0);
 }
 
-int	checker_E_C(t_game *game)
+int	checker_e_c(t_game *game)
 {
 	int		i;
 	int		j;
