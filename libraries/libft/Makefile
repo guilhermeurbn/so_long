@@ -6,13 +6,13 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/14 14:50:55 by guisanto          #+#    #+#              #
-#    Updated: 2025/04/21 17:24:14 by guisanto         ###   ########.fr        #
+#    Updated: 2025/09/17 17:27:46 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 INCLUDES_DIR = includes
 
 SRCS	= ft_isalpha.c \
