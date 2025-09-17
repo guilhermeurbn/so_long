@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:07:58 by guisanto          #+#    #+#             */
-/*   Updated: 2025/09/15 11:43:45 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/16 23:45:31 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		{
 			if (game.map)
 				free_map(game.map);
-			write(1, "Error\nInvalid Map\n", 17);
+			write(1, "Error\n", 6);
 			exit(1);
 		}
 	}
