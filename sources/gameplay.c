@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 17:23:16 by guisanto          #+#    #+#             */
-/*   Updated: 2025/04/23 20:18:13 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:13:57 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ static void	game_events(int keycode, t_game *game)
 	if (keycode == KEY_W || keycode == ARROW_UP)
 	{
 		game->y_player -= 1;
-		player_w(game);
+		player_move(game, 'w');
 	}
 	else if (keycode == KEY_S || keycode == ARROW_DOWN)
 	{
 		game->y_player += 1;
-		player_s(game);
+		player_move(game, 's');
 	}
 	else if (keycode == KEY_D || keycode == ARROW_RIGHT)
 	{
 		game->x_player += 1;
-		player_d(game);
+		player_move(game, 'd');
 	}
 	else if (keycode == KEY_A || keycode == ARROW_LEFT)
 	{
 		game->x_player -= 1;
-		player_a(game);
+		player_move(game, 'a');
 	}
 }
 

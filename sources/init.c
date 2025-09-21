@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:24:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/09/17 17:27:04 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/18 14:04:10 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ static void	img_init(t_game *game)
 			&game->img_w, &game->img_h);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx, "images/exit_close.xpm",
 			&game->img_w, &game->img_h);
-	//proteger imagens
+	if (!game->img_backg || !game->img_player || !game->img_wall
+		|| !game->img_colect || !game->img_exit)
+	{
+		write(1, "Error\nImage not found\n", 22);
+		exit_game(game);
+	}
 }
 
 static void	size_window_init(t_game *game)
@@ -40,7 +45,6 @@ static void	size_window_init(t_game *game)
 
 void	game_init(t_game *game)
 {
-	//proteger caso seu NULL
 	game->mlx = mlx_init();
 	size_window_init(game);
 	game->win = mlx_new_window(game->mlx, game->map_w, game->map_h, "so_long");
