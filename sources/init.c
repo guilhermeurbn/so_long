@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:24:33 by guisanto          #+#    #+#             */
-/*   Updated: 2025/09/18 14:04:10 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/22 12:31:42 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,18 @@ static void	size_window_init(t_game *game)
 void	game_init(t_game *game)
 {
 	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		write(1, "Error\nMLX init failed\n", 23);
+		exit(1);
+	}
 	size_window_init(game);
 	game->win = mlx_new_window(game->mlx, game->map_w, game->map_h, "so_long");
+	if (!game->win)
+	{
+		write(1, "Error\nWindow init failed\n", 26);
+		exit_game(game);
+	}
 	game->moves = 0;
 	game->endgame = 0;
 	img_init(game);
