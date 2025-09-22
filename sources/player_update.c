@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/09/22 12:45:33 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/22 13:48:03 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,14 @@ void	player_move(t_game *game, char key)
 			game->map[game->y_player][game->x_player] = 'P';
 		if (key == 'w' && game->map[game->y_player + 1][game->x_player] != 'E')
 			game->map[game->y_player + 1][game->x_player] = '0';
-		else if (key == 's' && game->map[game->y_player - 1][game->x_player] != 'E')
+		else if (key == 's' && game->map[game->y_player
+				- 1][game->x_player] != 'E')
 			game->map[game->y_player - 1][game->x_player] = '0';
-		else if (key == 'd' && game->map[game->y_player][game->x_player - 1] != 'E')
+		else if (key == 'd' && game->map[game->y_player][game->x_player
+			- 1] != 'E')
 			game->map[game->y_player][game->x_player - 1] = '0';
-		else if (key == 'a' && game->map[game->y_player][game->x_player + 1] != 'E')
+		else if (key == 'a' && game->map[game->y_player][game->x_player
+			+ 1] != 'E')
 			game->map[game->y_player][game->x_player + 1] = '0';
 		game->moves++;
 		map_draw(game);
