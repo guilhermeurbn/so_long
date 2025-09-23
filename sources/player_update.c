@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:06 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2025/09/22 14:00:39 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/22 18:06:27 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	player_reached_exit(t_game *game, char key)
 		game->moves++;
 		game->endgame = 1;
 		exit_game(game);
-		map_draw(game);	
+		map_draw(game);
 		return (1);
 	}
 	return (0);

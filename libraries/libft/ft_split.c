@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:37:56 by guilhermeur       #+#    #+#             */
-/*   Updated: 2025/01/21 13:53:26 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/09/22 18:09:59 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	ft_free(char **strs, int count)
 		i++;
 	}
 	free(strs);
-	*strs = NULL;
 }
 
 static int	copy_split(char const *s, char c, char **dest)
